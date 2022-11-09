@@ -15,7 +15,7 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->name(),
+            'title' => fake()->realText(20),
         ];
     }
 }

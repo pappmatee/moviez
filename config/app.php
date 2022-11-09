@@ -196,6 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Modules\Movie\Providers\MovieServiceProvider::class,
+        Modules\Category\Providers\CategoryServiceProvider::class,
+        Modules\Tag\Providers\TagServiceProvider::class,
 
     ],
 

@@ -28,6 +28,7 @@ class MoviesTable extends Component
     public function getMoviesProperty(): Collection|LengthAwarePaginator|array
     {
         return Movie::query()
+            ->with('categories')
             ->when($this->search, fn($query, $search) => $query->filter($search))
             ->paginate(20);
     }

@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\Movie\Database\Seeders;
+namespace Modules\Category\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Modules\Category\Models\Category;
-use Modules\Movie\Models\Movie;
 
-class MovieSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +14,8 @@ class MovieSeeder extends Seeder
      */
     public function run()
     {
-        Movie::factory(20)
-            ->has(Category::factory(2))
+        Category::factory(10)
+            ->hasTags(2)
             ->create();
     }
 }
