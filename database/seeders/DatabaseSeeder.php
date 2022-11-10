@@ -12,6 +12,7 @@ use Modules\Movie\Models\MovieCategory;
 use Modules\Movie\Models\MovieVenue;
 use Modules\Tag\Database\Seeders\TagSeeder;
 use Modules\Tag\Models\Tag;
+use Modules\Venue\Models\Opening;
 use Modules\Venue\Models\Venue;
 
 class DatabaseSeeder extends Seeder
@@ -26,8 +27,21 @@ class DatabaseSeeder extends Seeder
         Movie::factory(20)
             ->create();
 
-        Venue::factory(5)
+        $venues = Venue::factory(5)
             ->create();
+
+        foreach ($venues as $venue) {
+            Opening::query()->create([
+                'venue_id' => $venue->id,
+                'monday' => fake()->boolean(50),
+                'tuesday' => fake()->boolean(50),
+                'wednesday' => fake()->boolean(50),
+                'thursday' => fake()->boolean(50),
+                'friday' => fake()->boolean(50),
+                'saturday' => fake()->boolean(50),
+                'sunday' => fake()->boolean(50),
+            ]);
+        }
 
         $categories = Category::factory(3)
             ->hasTags(2)

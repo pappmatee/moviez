@@ -4,6 +4,7 @@ namespace Modules\Movie\Livewire;
 
 use App\Contracts\WithDownloadTables;
 use App\Traits\HasTableDownload;
+use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,6 +26,8 @@ class MoviesTable extends Component
 
     public $minPrice;
     public $maxPrice;
+
+    public $date;
 
     public string $venue = '';
     public string $search = '';
@@ -65,6 +68,13 @@ class MoviesTable extends Component
             })
             ->when($this->maxPrice, function ($query) {
                 $query->where('price', '<=', $this->maxPrice);
+            })
+            ->when($this->date, function ($query) {
+                $query->whereHas('venues', function ($query) {
+                    $query->whereHas('opening', function ($query) {
+                        $query->where('openings.'.Carbon::parse($this->date)->format('l'), '=', 1);
+                    });
+                });
             })
             ->when($this->tag, function ($movie) {
                 $movie->whereHas('tags', function ($tag) {

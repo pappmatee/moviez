@@ -16,6 +16,11 @@ class Venue extends Model
         return $this->belongsToMany(MovieVenue::class, 'movie_venue');
     }
 
+    public function opening()
+    {
+        return $this->hasOne(Opening::class, 'venue_id');
+    }
+
     protected static function newFactory()
     {
         return VenueFactory::new();
