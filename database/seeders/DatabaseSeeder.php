@@ -5,8 +5,12 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\Category\Database\Seeders\CategorySeeder;
+use Modules\Category\Models\Category;
 use Modules\Movie\Database\Seeders\MovieSeeder;
+use Modules\Movie\Models\Movie;
+use Modules\Movie\Models\MovieCategory;
 use Modules\Tag\Database\Seeders\TagSeeder;
+use Modules\Tag\Models\Tag;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,13 +21,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(MovieSeeder::class);
-        $this->call(CategorySeeder::class);
-        // \App\Models\User::factory(10)->create();
+        Movie::factory(20)
+            ->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $categories = Category::factory(3)
+            ->hasTags(2)
+            ->create();
+
+        Movie::query()->each(function ($movie) {
+            MovieCategory::query()->create([
+                'movie_id' => $movie->id,
+                'category_id' => fake()->numberBetween(1, 3)
+            ]);
+        });
+
+        Tag::query()->each(function ($tag) {
+            Tag::query()->create([
+                'name' => $tag->name,
+                'taggable_type' => 'Modules\Movie\Models\Movie',
+                'taggable_id' => fake()->numberBetween(1, 20)
+            ]);
+        });
+
     }
 }
