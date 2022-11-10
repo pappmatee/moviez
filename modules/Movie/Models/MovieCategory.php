@@ -10,4 +10,9 @@ class MovieCategory extends Model
     use HasFactory;
 
     protected $table = 'movie_category';
+
+    public function movies()
+    {
+
+    }
 }

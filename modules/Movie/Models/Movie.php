@@ -29,7 +29,6 @@ class Movie extends Model
 
     public function scopeFilter($query, string $filter): void
     {
-        $query
-            ->where('title', 'like', "%$filter%");
+
     }
 }
