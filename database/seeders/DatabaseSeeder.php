@@ -9,8 +9,10 @@ use Modules\Category\Models\Category;
 use Modules\Movie\Database\Seeders\MovieSeeder;
 use Modules\Movie\Models\Movie;
 use Modules\Movie\Models\MovieCategory;
+use Modules\Movie\Models\MovieVenue;
 use Modules\Tag\Database\Seeders\TagSeeder;
 use Modules\Tag\Models\Tag;
+use Modules\Venue\Models\Venue;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +26,9 @@ class DatabaseSeeder extends Seeder
         Movie::factory(20)
             ->create();
 
+        Venue::factory(5)
+            ->create();
+
         $categories = Category::factory(3)
             ->hasTags(2)
             ->create();
@@ -32,6 +37,10 @@ class DatabaseSeeder extends Seeder
             MovieCategory::query()->create([
                 'movie_id' => $movie->id,
                 'category_id' => fake()->numberBetween(1, 3)
+            ]);
+            MovieVenue::query()->create([
+                'movie_id' => $movie->id,
+                'venue_id' => fake()->numberBetween(1, 5)
             ]);
         });
 

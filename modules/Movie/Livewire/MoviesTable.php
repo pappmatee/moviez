@@ -23,6 +23,7 @@ class MoviesTable extends Component
     public array $category = [];
     public array $tag = [];
 
+    public string $venue = '';
     public string $search = '';
 
     public function updatingSearch()
@@ -50,6 +51,11 @@ class MoviesTable extends Component
         return Movie::query()
             ->when($this->search, function ($movie) {
                 $movie->where('title', 'like', "%$this->search%");
+            })
+            ->when($this->venue, function ($query) {
+                $query->whereHas('venues', function ($query) {
+                    $query->where('venues.name', 'like', "%$this->venue%");
+                });
             })
             ->when($this->tag, function ($movie) {
                 $movie->whereHas('tags', function ($tag) {

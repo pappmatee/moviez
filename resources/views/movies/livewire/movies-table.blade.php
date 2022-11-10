@@ -1,5 +1,5 @@
 <div class="px-4 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center space-x-3">
         <div class="sm:w-1/4">
             <div>
                 <div class="mt-1">
@@ -7,6 +7,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="sm:w-1/4">
+            <div>
+                <div class="mt-1">
+                    <input wire:model="venue" type="text" name="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Helyszín...">
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="mt-8 flex space-x-6">
         <div class="flex-none lg:pr-8">

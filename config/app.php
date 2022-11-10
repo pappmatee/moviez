@@ -198,6 +198,7 @@ return [
         Modules\Movie\Providers\MovieServiceProvider::class,
         Modules\Category\Providers\CategoryServiceProvider::class,
         Modules\Tag\Providers\TagServiceProvider::class,
+        Modules\Venue\Providers\VenueServiceProvider::class,
 
     ],
 
