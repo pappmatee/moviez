@@ -16,6 +16,7 @@ class MovieFactory extends Factory
     {
         return [
             'title' => fake()->realText(20),
+            'price' => fake()->numberBetween(700, 2700),
         ];
     }
 }

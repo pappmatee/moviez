@@ -23,6 +23,9 @@ class MoviesTable extends Component
     public array $category = [];
     public array $tag = [];
 
+    public $minPrice;
+    public $maxPrice;
+
     public string $venue = '';
     public string $search = '';
 
@@ -56,6 +59,12 @@ class MoviesTable extends Component
                 $query->whereHas('venues', function ($query) {
                     $query->where('venues.name', 'like', "%$this->venue%");
                 });
+            })
+            ->when($this->minPrice, function ($query) {
+                $query->where('price', '>=', $this->minPrice);
+            })
+            ->when($this->maxPrice, function ($query) {
+                $query->where('price', '<=', $this->maxPrice);
             })
             ->when($this->tag, function ($movie) {
                 $movie->whereHas('tags', function ($tag) {

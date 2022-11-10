@@ -1,17 +1,25 @@
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center space-x-3">
-        <div class="sm:w-1/4">
+        <div class="sm:w-1/6">
             <div>
                 <div class="mt-1">
-                    <input wire:model="search" type="text" name="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Keresés...">
+                    <input wire:model="search" type="text" name="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Movie...">
                 </div>
             </div>
         </div>
 
-        <div class="sm:w-1/4">
+        <div class="sm:w-1/6">
             <div>
                 <div class="mt-1">
-                    <input wire:model="venue" type="text" name="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Helyszín...">
+                    <input wire:model="venue" type="text" name="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Venue...">
+                </div>
+            </div>
+        </div>
+        <div class="sm:w-1/6">
+            <div>
+                <div class="mt-1 flex">
+                    <input wire:model="minPrice" type="text" name="price" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Min. price...">
+                    <input wire:model="maxPrice" type="text" name="price" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Max. price..">
                 </div>
             </div>
         </div>

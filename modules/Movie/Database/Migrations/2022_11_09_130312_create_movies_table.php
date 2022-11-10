@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->integer('price');
             $table->timestamps();
         });
     }
